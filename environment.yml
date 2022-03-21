@@ -15,5 +15,6 @@ dependencies:
     - pyfiglet
     - tensorflow
     - tensorflow-gpu
+    - sklearn
     
   
