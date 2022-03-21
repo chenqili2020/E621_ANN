@@ -1,2 +1,2 @@
 # E621_ANN
-Artificial  Neural Network to label images
+## _Artificial Neural Network to label the artist name for the images_
