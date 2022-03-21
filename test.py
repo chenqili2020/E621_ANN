@@ -12,6 +12,7 @@ socket.setdefaulttimeout(20)
 if not os.path.exists('./horny_pics'):
     os.mkdir('./horny_pics')
 # 好看的打印
+# Display welcome message
 Welcome()
 
 # Get arti name and call Getsoup
@@ -23,4 +24,11 @@ print("{} has {} page(s) of art on E621!".format(path_name, page_numbers))
 
 #https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 #print(soup.prettify())
-Downloader(path_name, page_numbers)
+
+print("想要开始下载图片么，\n这样会在该目录中创建一个文件夹并且创建一个sub文件夹，以画师名字命名")
+download_TF = str(input("[y/n]: \n"))
+if download_TF.lower() == 'y':
+    Downloader(path_name, page_numbers)
+    print("下载完成！ \n")
+else:
+    print("输入非[ y ],取消下载. :3 ")

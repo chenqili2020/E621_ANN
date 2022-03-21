@@ -84,6 +84,18 @@ def Info_display(soup, name):
             path_name = "noname"
 
     return (path_name, loop_num)
+    
+def write_in_log(img_id, arti_name):
+    """
+    img_id: the post ID
+    arti_name: the artist name
+    This function write a txt file to record the downloaded art and artist name.
+    """
+    line = img_id+","+arti_name
+    with open('horny_pics/download_log.txt', 'a') as f:
+        f.write(line)
+        f.write('\n')
+    
 
 def Downloader(arti_name, page_numbers):
     """
@@ -109,20 +121,38 @@ def Downloader(arti_name, page_numbers):
         # 请求每一页的每张图
         print(len(post_list))
         for post in post_list:
+            #set up the sleep time inorder to not get kicked out
             time.sleep(0.1)
             #print(post)
+            
+            #get some basic image info
             src = post['data-large-file-url']
             img_data = requests.get(url=src, headers=headers).content
             img_id = post['id']
-            img_path = 'horny_pics/' + arti_name + '/_' + img_id + '.jpg'
+            img_path = 'horny_pics/' + arti_name + '/'+arti_name + '_' + img_id + '.jpg'
             # 存图
+            # TODO 加入更多的display 例如收藏数
             #print( "Downloading Art with ID {}, Up Vote{}, Fav Number {}")#.format(img_id,)
             total_art += 1
-
-
+            
+            # write the log txt
+            # need to add check if it already created
+            with open('horny_pics/download_log.txt', 'w') as log_txt:
+                log_txt.write("ID,Name")
+                log_txt.write("\n")
+                
+                
+            # checking path and download
             if os.path.exists(img_path):
-                print("already downloaded")
+                print("Art {} already downloaded!".format(img_id))
             else:
+                
+                # write the binary img file
                 with open(img_path, 'wb') as fp:
                     fp.write(img_data)
-                    #print(img_id, "\nArt Download 完成！ >W< Art No.{}\n".format(total_art))
+                    print(img_id, "\nArt Download 完成！ >W< Art No.{}\n".format(total_art))
+                    
+                # write into log txt
+                write_in_log(img_id, arti_name)
+    log_txt.close()
+
