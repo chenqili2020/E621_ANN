@@ -13,4 +13,7 @@ dependencies:
     - requests
     - termcolor
     - pyfiglet
+    - tensorflow
+    - tensorflow-gpu
+    
   
