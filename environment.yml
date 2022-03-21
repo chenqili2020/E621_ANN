@@ -1,0 +1,21 @@
+channels:
+  - defaults
+dependencies:
+  - pip
+  - jupyter
+  - numpy
+  - matplotlib
+  - pandas
+  - scikit-image
+  - scikit-learn
+  - pip:
+    - bs4
+    - requests
+    - termcolor
+    - pyfiglet
+    - tensorflow
+    - tensorflow-gpu
+    - sklearn
+    - keras
+    
+  
