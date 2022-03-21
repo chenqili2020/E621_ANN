@@ -137,9 +137,12 @@ def Downloader(arti_name, page_numbers):
             
             # write the log txt
             # need to add check if it already created
-            with open('horny_pics/download_log.txt', 'w') as log_txt:
-                log_txt.write("ID,Name")
-                log_txt.write("\n")
+            if os.path.exists('horny_pics/download_log.txt'):
+                pass
+            else:
+                with open('horny_pics/download_log.txt', 'w') as log_txt:
+                    log_txt.write("ID,Name")
+                    log_txt.write("\n")
                 
                 
             # checking path and download
@@ -154,5 +157,5 @@ def Downloader(arti_name, page_numbers):
                     
                 # write into log txt
                 write_in_log(img_id, arti_name)
-    log_txt.close()
+
 
