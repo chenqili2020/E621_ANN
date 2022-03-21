@@ -16,5 +16,6 @@ dependencies:
     - tensorflow
     - tensorflow-gpu
     - sklearn
+    - keras
     
   
