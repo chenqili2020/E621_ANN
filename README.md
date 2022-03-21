@@ -7,3 +7,7 @@
 * requests
 * termcolor
 * pyfiglet
+
+**Manually:**  
+
+	conda env create --prefix ./envs --file environment.yml
